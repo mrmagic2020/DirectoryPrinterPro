@@ -8,6 +8,8 @@
 
 ## Installation
 
+`Download` or `clone` the repository to your local machine.
+
 ### Via CMake
 
 ```bash
