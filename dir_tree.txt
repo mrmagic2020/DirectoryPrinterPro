@@ -1,0 +1,16 @@
+printdir --ignore build .vscode .git .DS_Store --to-file
+DirectoryPrinterPro
+├─ src
+│   ├─ include
+│   │   ├─ termstyle.hpp
+│   │   ├─ parse_ignore.hpp
+│   │   └─ CLI11.hpp
+│   └─ main.cpp
+├─ assets
+│   └─ --use-prev-cmd.png
+├─ tests
+│   └─ main.cpp
+├─ CMakelists.txt
+├─ LICENSE
+├─ README.md
+└─ .gitignore

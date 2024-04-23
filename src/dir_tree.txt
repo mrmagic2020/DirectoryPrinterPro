@@ -1,0 +1,7 @@
+printdir --to-file --ignore .DS_Store .vscode .git build
+src
+├─ include
+│   ├─ termstyle.hpp
+│   ├─ parse_ignore.hpp
+│   └─ CLI11.hpp
+└─ main.cpp
