@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <vector>
 #include <unordered_set>
+#include <chrono>
 
 #include "include/CLI11.hpp"
 #include "include/termstyle.hpp"
@@ -11,7 +12,7 @@ namespace fs = std::__fs::filesystem;
 namespace ts = termstyle;
 
 const std::string outFile = "dir_tree.txt";
-std::ofstream file(outFile, std::ios::app);
+std::ofstream file;
 
 bool no_ignore = false, to_file = false, use_prev_cmd = false;
 int maxDepth = -1;
@@ -113,10 +114,6 @@ void termstyle_init()
             .text = "[INFO] ",
             .prestyles = {ts::Color(ts::Codes::BRIGHT), ts::Color(ts::Codes::FOREGROUND_CYAN)},
             .poststyles = {ts::Color(ts::Codes::BRIGHT_RESET)}
-        },
-        .suffix = {
-            .text = "\n----------",
-            .prestyles = {ts::Color(ts::Codes::RESTORE)}
         }
     });
 
@@ -131,6 +128,7 @@ void termstyle_init()
 
 int main(int argc, char *argv[])
 {
+    const auto start{std::chrono::high_resolution_clock::now()};
     termstyle_init();
 
     CLI::App app;
@@ -165,6 +163,7 @@ int main(int argc, char *argv[])
     }
 
     initFile();
+    if (to_file) file = std::ofstream(outFile, std::ios::app);
 
     if (!use_prev_cmd)
     {
@@ -186,6 +185,10 @@ int main(int argc, char *argv[])
     printDir(fs::current_path(), ignoreFiles, maxDepth, 1);
 
     file.close();
+    
+    const auto end{std::chrono::high_resolution_clock::now()};
+    const std::chrono::duration<double> elapsed{end - start};
+    ts::print("Info", "Execution time: " + std::to_string(elapsed.count()) + "s");
 
     return 0;
 }
