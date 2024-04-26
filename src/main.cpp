@@ -18,6 +18,7 @@ bool no_ignore = false, to_file = false, use_prev_cmd = false;
 int maxDepth = -1;
 std::string dirName = "";
 std::unordered_set<std::string> ignoreFiles;
+std::unordered_set<std::string> noContent;
 
 bool checkIgnore(const fs::path &path)
 {
@@ -90,7 +91,7 @@ void printDir(const fs::path &path, const std::unordered_set<std::string> &ignor
         bool isEnd = (i == entries.size() - 1);
         print(addSpaces(depth, isEnd) + subtractPath(entry.path(), path));
 
-        if (entry.is_directory())
+        if (entry.is_directory() && noContent.find(entry.path().filename().string()) == noContent.end())
         {
             printDir(entry.path(), ignoreFiles, maxDepth, depth + 1);
         }
@@ -140,6 +141,7 @@ int main(int argc, char *argv[])
     app.add_option("-d,--depth", maxDepth, "Set recursion depth. A negative value means infinite depth.");
     app.add_option("-n,--name", dirName, "Set the directory name to start from. Only affects the output.");
     app.add_option("--ignore", ignoreFiles, "Ignore files.");
+    app.add_option("--no-content", noContent, "Ignore the contents of specific directories.");
 
     CLI11_PARSE(app, argc, argv);
 
