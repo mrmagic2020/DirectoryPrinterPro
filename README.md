@@ -41,4 +41,6 @@ Navigate to the directory you want to print and run the following command:
 
 `-n, --name TEXT` - Set the root directory name. Only affects the output.
 
-`--ignore TEXT ...` - Set the list of filenames to be ignored.
+`--ignore TEXT ...` - Set the list of files/directories to be ignored. (e.g. `.vscode`, `.git`, `build`, etc.)
+
+`--no-content TEXT ...` - Ignore the contents of specific directories. (Only prints the directory name.)
