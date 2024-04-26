@@ -1,4 +1,4 @@
-printdir --ignore build .vscode .git .DS_Store --to-file
+printdir --no-content build --ignore .vscode .git .DS_Store --to-file
 DirectoryPrinterPro
 ├─ src
 │   ├─ include
@@ -8,8 +8,10 @@ DirectoryPrinterPro
 │   └─ main.cpp
 ├─ assets
 │   └─ --use-prev-cmd.png
+├─ build
 ├─ tests
 │   └─ main.cpp
+├─ install.bash
 ├─ CMakelists.txt
 ├─ LICENSE
 ├─ README.md
