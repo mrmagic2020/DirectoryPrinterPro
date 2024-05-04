@@ -8,7 +8,7 @@
 
 ## Installation
 
-`Download` or `clone` the repository to your local machine.
+`Download` or `clone` the [repository](https://github.com/mrmagic2020/DirectoryPrinterPro) to your local machine.
 
 ### Via CMake
 
