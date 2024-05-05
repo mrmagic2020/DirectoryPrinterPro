@@ -44,3 +44,5 @@ Navigate to the directory you want to print and run the following command:
 `--ignore TEXT ...` - Set the list of files/directories to be ignored. (e.g. `.vscode`, `.git`, `build`, etc.)
 
 `--no-content TEXT ...` - Ignore the contents of specific directories. (Only prints the directory name.)
+
+`--use-prev-cmd` - Use the same command executed previously. Commands without this flag and with the --to-file flag will be stored in the file. This will ignore all other flags and options.
