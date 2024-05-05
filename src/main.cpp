@@ -23,8 +23,11 @@ bool to_file = false;       ///< Flag to output to a file
 bool use_prev_cmd = false;  ///< Flag to use the previous command
 int maxDepth = -1;          ///< Default recursion depth (-1 means infinite)
 std::string dirName = "";   ///< Default directory name
-std::unordered_set<std::string> ignoreFiles;  ///< Files to ignore
-std::unordered_set<std::string> noContent;  ///< Directories to ignore contents
+std::unordered_set<std::string>
+    ignoreFiles;  ///< Files and directories in this set will be ignored and not
+                  ///< printed
+std::unordered_set<std::string> noContent;  ///< Directories in this set will be
+                                            ///< printed but not their contents
 
 /**
  * @brief Check if the file should be ignored.
