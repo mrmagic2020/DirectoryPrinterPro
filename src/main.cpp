@@ -2,15 +2,15 @@
  * @file main.cpp
  */
 
-#include <chrono>         /// For timing
-#include <filesystem>     /// For directory iteration
-#include <fstream>        /// For file I/O
-#include <iostream>       /// For I/O Operations
-#include <unordered_set>  /// For ignoring files
-#include <vector>         /// For storing directory entries
+#include <chrono>         // For timing
+#include <filesystem>     // For directory iteration
+#include <fstream>        // For file I/O
+#include <iostream>       // For I/O Operations
+#include <unordered_set>  // For ignoring files
+#include <vector>         // For storing directory entries
 
-#include "include/CLI11.hpp"      /// For command line parsing
-#include "include/termstyle.hpp"  /// For colored output
+#include "include/CLI11.hpp"      // For command line parsing
+#include "include/termstyle.hpp"  // For colored output
 
 namespace fs = std::__fs::filesystem;
 namespace ts = termstyle;
@@ -28,6 +28,8 @@ std::unordered_set<std::string> noContent;  ///< Directories to ignore contents
 
 /**
  * @brief Check if the file should be ignored.
+ * @see ignoreFiles
+ * @see no_ignore
  * @param path The path to the file.
  * @return True if the file should be ignored, false otherwise.
  */
@@ -61,9 +63,9 @@ std::string subtractPath(const fs::path &path, const fs::path &base)
  */
 std::string addSpaces(int depth, bool isEnd)
 {
-    static const std::string levelConnector = "│   ";  ///< Level connector
-    static const std::string lastBranch = "└─ ";       ///< Last branch
-    static const std::string middleBranch = "├─ ";     ///< Middle branch
+    static const std::string levelConnector = "│   ";  // Level connector
+    static const std::string lastBranch = "└─ ";       // Last branch
+    static const std::string middleBranch = "├─ ";     // Middle branch
 
     if (depth == 0) return "";
 
@@ -82,6 +84,7 @@ std::string addSpaces(int depth, bool isEnd)
 
 /**
  * @brief Print the string to the console and the file if the flag is set.
+ * @see to_file
  * @param str The string to print.
  * @return void
  */
@@ -111,7 +114,7 @@ void printDir(const fs::path &path,
     {
         return;
     }
-    std::vector<fs::directory_entry> entries;  ///< Directory entries
+    std::vector<fs::directory_entry> entries;  // Directory entries
     // Iterate over the directory entries using filesystem
     for (const auto &entry : fs::directory_iterator(path))
     {
@@ -134,7 +137,7 @@ void printDir(const fs::path &path,
             continue;
         }
         bool isEnd =
-            (i == entries.size() - 1);  ///< Check if it's the end of the branch
+            (i == entries.size() - 1);  // Check if it's the end of the branch
         print(addSpaces(depth, isEnd) + subtractPath(entry.path(), path));
 
         // Recursively call the function if the entry is a directory, excluding
@@ -192,11 +195,10 @@ void termstyle_init()
  */
 int main(int argc, char *argv[])
 {
-    const auto start{
-        std::chrono::high_resolution_clock::now()};  ///< Start timer
+    const auto start{std::chrono::high_resolution_clock::now()};  // Start timer
     termstyle_init();
 
-    CLI::App app;  ///< CLI11 App
+    CLI::App app;  // CLI11 App
 
     // Add command line options
 
@@ -269,8 +271,8 @@ int main(int argc, char *argv[])
 
     file.close();
 
-    const auto end{std::chrono::high_resolution_clock::now()};  ///< End timer
-    const std::chrono::duration<double> elapsed{end - start};  ///< Elapsed time
+    const auto end{std::chrono::high_resolution_clock::now()};  // End timer
+    const std::chrono::duration<double> elapsed{end - start};   // Elapsed time
     ts::print("Info",
               "Execution time: " + std::to_string(elapsed.count()) + "s");
 
