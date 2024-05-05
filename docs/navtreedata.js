@@ -25,12 +25,12 @@
 var NAVTREE =
 [
   [ "DirectoryPrinterPro", "index.html", [
-    [ "Installation", "index.html#autotoc_md1", [
-      [ "Via CMake", "index.html#autotoc_md2", null ],
-      [ "Via script (CMake required)", "index.html#autotoc_md3", null ]
+    [ "Installation", "index.html#installation", [
+      [ "Via CMake", "index.html#via-cmake", null ],
+      [ "Via script (CMake required)", "index.html#via-script-cmake-required", null ]
     ] ],
-    [ "Usage", "index.html#autotoc_md4", [
-      [ "Options", "index.html#autotoc_md5", null ]
+    [ "Usage", "index.html#usage", [
+      [ "Options", "index.html#options", null ]
     ] ],
     [ "Files", "files.html", [
       [ "File List", "files.html", "files_dup" ],
